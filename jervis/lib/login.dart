@@ -17,7 +17,7 @@ class login extends StatelessWidget {
         ),
       body: Container(
         height: double.infinity,
-        width: 800,
+        width: double.infinity,
         child: Padding(
           padding: EdgeInsets.all(20),
           child: Column(

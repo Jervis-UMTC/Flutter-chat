@@ -8,14 +8,14 @@ class Chat extends StatefulWidget {
 }
 
 class _ChatState extends State<Chat> {
-  List<String> _messages = [];
+  List<String> messages = [];
 
   TextEditingController _controller = TextEditingController();
 
   void _sendMessage (){
     if (_controller.text.isNotEmpty){
       setState(() {
-        _messages.add(_controller.text);
+        messages.add(_controller.text);
         _controller.clear;
       });
     }
@@ -36,9 +36,9 @@ class _ChatState extends State<Chat> {
             children: [
               Expanded(
                 child: ListView.builder(
-                  itemCount: _messages.length,
+                  itemCount: messages.length,
                   itemBuilder: (context, index) {
-                    return ListTile(title: Text(_messages[index]));
+                    return ListTile(title: Text(messages[index]));
                   },
                 ),
               ),
