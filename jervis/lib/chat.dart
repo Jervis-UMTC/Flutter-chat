@@ -8,7 +8,18 @@ class Chat extends StatefulWidget {
 }
 
 class _ChatState extends State<Chat> {
-  
+  List<String> _messages = [];
+
+  TextEditingController _controller = TextEditingController();
+
+  void _sendMessage (){
+    if (_controller.text.isNotEmpty){
+      setState(() {
+        _messages.add(_controller.text);
+        _controller.clear;
+      });
+    }
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,9 +36,9 @@ class _ChatState extends State<Chat> {
             children: [
               Expanded(
                 child: ListView.builder(
-                  itemCount: 20,
+                  itemCount: _messages.length,
                   itemBuilder: (context, index) {
-                    return ListTile(title: Text('Message: $index'));
+                    return ListTile(title: Text(_messages[index]));
                   },
                 ),
               ),
@@ -43,7 +54,7 @@ class _ChatState extends State<Chat> {
                     ),
                   ),
 
-                  IconButton(onPressed: (){}, icon: Icon(Icons.send)),
+                  IconButton(onPressed: _sendMessage, icon: Icon(Icons.send)),
                 ],
               ),
             ],
